@@ -4,6 +4,22 @@
 //
 //  Created by utkarsh mishra on 22/12/24.
 //
+////1. **********What SceneDelegate Does - The SceneDelegate ensures each window has its own lifecycle and user interface.
+//The SceneDelegate handles scene-specific events, such as setting up and managing the app's user interface. In apps that support multiple windows (on iPadOS or macOS), each window has its own SceneDelegate instance.
+//
+//The method scene(_:willConnectTo:options:) is called when the system creates or re-connects a scene. It's where you typically set up the app's window and root view controller.
+//
+////******2. Code Breakdown
+//guard let windowScene = (scene as? UIWindowScene) else { return }
+//Ensures the provided scene is of type UIWindowScene, which represents a scene capable of displaying a window. If it isn’t, the method exits early.
+//window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+//Initializes a new UIWindow with the same size as the UIWindowScene bounds. This creates the actual window where your app's views will be displayed.
+//window?.windowScene = windowScene
+//Associates the window with the current UIWindowScene. This step is necessary to let the system know which scene the window belongs to.
+//window?.rootViewController = ViewController()
+//Sets the initial view controller (ViewController) as the root view controller of the window. This is the entry point for your app's interface and dictates what the user sees first.
+//window?.makeKeyAndVisible()
+//Makes the window the key window, meaning it receives user interactions. It also makes the window visible on the screen.
 
 import UIKit
 
@@ -13,11 +29,40 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+       
+        
+        
+        
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene = windowScene
+        window?.rootViewController = createtabbar() // this tab bar controller holds the navigationa controller and the navigation controller will hold viewcontroller
+        window?.makeKeyAndVisible()
+        
     }
+    
+    func createSearchNaviagationController() -> UINavigationController {
+        let searchVC = SearchVC()
+        searchVC.title = "Search"
+        searchVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 0)
+        return UINavigationController(rootViewController: searchVC)
+    }
+    
+    func createFavoritesNavigationController() -> UINavigationController {
+        let favoritesListVC = FavoritesListVC()
+        favoritesListVC.title = "Favorites"
+        favoritesListVC.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "star"), tag: 1)
+        return UINavigationController(rootViewController: favoritesListVC)
+    }
+    
+    func createtabbar() -> UITabBarController {
+        let tabbar = UITabBarController()
+        UITabBar.appearance().tintColor = .systemGreen
+        tabbar.viewControllers = [createSearchNaviagationController(), createFavoritesNavigationController()]
+        return tabbar
+    }
+    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
