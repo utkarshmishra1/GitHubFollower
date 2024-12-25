@@ -26,9 +26,9 @@ class GFButton: UIButton {
     
     
 //     now we don't want that each button have same colour so we --
-    init(backgroundColour: UIColor, title: String){
+    init(backgroundColor: UIColor, title: String){
         super.init(frame: .zero)
-        self.backgroundColor = backgroundColour // as we are passing our own custom colour
+        self.backgroundColor = backgroundColor // as we are passing our own custom colour
         self.setTitle(title, for: .normal) // we have different states of button but we usualy use normal
         configure()
         
