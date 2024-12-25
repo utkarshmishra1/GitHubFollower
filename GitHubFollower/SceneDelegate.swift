@@ -39,6 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         window?.rootViewController = createtabbar() // this tab bar controller holds the navigationa controller and the navigation controller will hold viewcontroller
         window?.makeKeyAndVisible()
+        configurenavvigationBar()
         
     }
     
@@ -61,6 +62,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UITabBar.appearance().tintColor = .systemGreen
         tabbar.viewControllers = [createSearchNaviagationController(), createFavoritesNavigationController()]
         return tabbar
+    }
+    
+    func configurenavvigationBar() {
+        UINavigationBar.appearance().tintColor = .systemGreen
     }
     
 

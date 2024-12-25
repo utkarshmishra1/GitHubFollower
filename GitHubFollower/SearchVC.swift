@@ -12,6 +12,10 @@ class SearchVC: UIViewController {
     let logoImageView = UIImageView()
     let usernameTextField = GFTextField()
     let callToActionButton = GFButton(backgroundColour: .systemGreen, title: " Get Followers")
+    
+    var isUsernameEntered: Bool{
+        return !usernameTextField.text!.isEmpty
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +30,25 @@ class SearchVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = true // so that at next screen it will not appear
         
         
     }
+    
+    func createDismissKeyboardGesture() {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing)) // endediting - causes the view to resign the first responder status
+        view.addGestureRecognizer(tap)
+        
+    }
+//    jb bbi #selector me use ho function to @Objc lgana pdta func me
+    @objc func pushFollowerListVC() {
+        guard isUsernameEntered else { return }
+        let followerListVC = FollowerListVC()
+        followerListVC.username = usernameTextField.text!
+        followerListVC.title = usernameTextField.text
+        navigationController?.pushViewController(followerListVC, animated: true)
+    }
+    
     func configureLogoIageView() {
         logoImageView.image = UIImage(named: "gh-logo")!
         view.addSubview(logoImageView)
@@ -48,6 +67,7 @@ class SearchVC: UIViewController {
     
     func configureTextField() {
         view.addSubview(usernameTextField)
+        usernameTextField.delegate = self// self is searchVC
        
         
         NSLayoutConstraint.activate([
@@ -63,6 +83,7 @@ class SearchVC: UIViewController {
     
     func configureCallttoActionButton() {
         view.addSubview(callToActionButton)
+        callToActionButton.addTarget(self, action: #selector(pushFollowerListVC), for: .touchUpInside) // now whenever we tab on button this will that function will call
         
         NSLayoutConstraint.activate([
             callToActionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
@@ -72,15 +93,18 @@ class SearchVC: UIViewController {
         ])
         
     }
+    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+   
 }
+
+//for organisation and performance
+extension SearchVC: UITextFieldDelegate {
+//    we need to tell it why we are using it(for what) to iske liye ye delegate jaha lgana h us function me likhna hoga
+//    to yaha jaise hm bta rhe ki kya ho jb hm return tap kre searchview me aur ye ye function call krdega
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        pushFollowerListVC()
+        return true
+    }
+}
+
