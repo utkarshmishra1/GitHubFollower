@@ -19,12 +19,12 @@ class NetworkManager{
 //    This is a completion handler—a closure used to handle the result of the asynchronous operation.
     ///   - [Follower]?: List of followers if successful, or `nil` if failed.
     ///   - String?: An error message if the fetch fails, or `nil` if successful.
-    func getFollowers(for username: String, page: Int, completed: @escaping ([Follower]?, ErrorMessages?) -> Void){
+    func getFollowers(for username: String, page: Int, completed: @escaping (Result<[Follower], GFError>) -> Void){
         let endpoint = baseURL + username + "/followers?per_page=100&page=\(page)"
         
 //        create a url if it is invalid through an error
         guard let url = URL(string: endpoint) else {
-            completed(nil, .invalidUsername)
+            completed(.failure(.invalidUsername))
             return
         }
         
@@ -33,20 +33,20 @@ class NetworkManager{
 //        if we get a valid url, URLSession used to fetch data from the provided URL
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             if let _ = error {
-                completed(nil, .unableToComplete)
+                completed(.failure(.unableToComplete))
                 return
             }
             
 
 //            we only move forward if the response is 200 else show error
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completed(nil, .invalidResponse)
+                completed(.failure(.invalidData))
                 return
                 
             }
 //            making sure data is not nil
             guard let data = data else {
-                completed(nil, .invalidData)
+                completed(.failure(.invalidData))
                 return
             }
 //             Parsing
@@ -55,9 +55,9 @@ class NetworkManager{
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
 //                getting array of followers
                 let followers = try decoder.decode([Follower].self, from: data)
-                completed(followers, nil)
+                completed(.success(followers))
             } catch {
-                completed(nil, .invalidData)
+                completed(.failure(.invalidData))
             }
             }
         task.resume()
