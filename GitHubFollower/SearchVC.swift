@@ -42,7 +42,9 @@ class SearchVC: UIViewController {
     }
 //    jb bbi #selector me use ho function to @Objc lgana pdta func me
     @objc func pushFollowerListVC() {
-        guard isUsernameEntered else { return }
+        guard isUsernameEntered else {
+            presentGFAlertOnMainThread(title: "Empty Username", message: "Please enter a username", buttonTile: "OK")
+            return }
         let followerListVC = FollowerListVC()
         followerListVC.username = usernameTextField.text!
         followerListVC.title = usernameTextField.text
