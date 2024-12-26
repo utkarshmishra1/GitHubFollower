@@ -7,6 +7,7 @@
 //making it singleTon
 import Foundation
 class NetworkManager{
+//    here shared is singleton
     static let shared = NetworkManager()
     let baseURL = "https://api.github.com/users/"
     
