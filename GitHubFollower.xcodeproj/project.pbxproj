@@ -11,7 +11,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		14C218AF2D1843FE00E96163 /* Exceptions for "GitHubFollower" folder in "GitHubFollower" target */ = {
+		14C219102D1D56F500E96163 /* Exceptions for "GitHubFollower" folder in "GitHubFollower" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -21,10 +21,10 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		14C2189F2D1843FC00E96163 /* GitHubFollower */ = {
+		14C219012D1D56F500E96163 /* GitHubFollower */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				14C218AF2D1843FE00E96163 /* Exceptions for "GitHubFollower" folder in "GitHubFollower" target */,
+				14C219102D1D56F500E96163 /* Exceptions for "GitHubFollower" folder in "GitHubFollower" target */,
 			);
 			path = GitHubFollower;
 			sourceTree = "<group>";
@@ -45,7 +45,7 @@
 		14C218942D1843FC00E96163 = {
 			isa = PBXGroup;
 			children = (
-				14C2189F2D1843FC00E96163 /* GitHubFollower */,
+				14C219012D1D56F500E96163 /* GitHubFollower */,
 				14C2189E2D1843FC00E96163 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,7 +74,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				14C2189F2D1843FC00E96163 /* GitHubFollower */,
+				14C219012D1D56F500E96163 /* GitHubFollower */,
 			);
 			name = GitHubFollower;
 			packageProductDependencies = (

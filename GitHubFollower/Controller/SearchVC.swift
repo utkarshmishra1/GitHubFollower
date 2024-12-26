@@ -30,7 +30,7 @@ class SearchVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true // so that at next screen it will not appear
+        navigationController?.setNavigationBarHidden(true, animated: true) // so that at next screen it will not appear
         
         
     }
