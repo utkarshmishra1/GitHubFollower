@@ -38,7 +38,7 @@ class GFButton: UIButton {
 //    private ka mtlb ki ye sirf is class me hi kam krega(only be called in this class)
     private func configure() {
         layer.cornerRadius = 10
-        titleLabel?.textColor = .white
+        setTitleColor(.white, for: .normal)
         titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline) //Dynamic fonts
         translatesAutoresizingMaskIntoConstraints = false
     }
