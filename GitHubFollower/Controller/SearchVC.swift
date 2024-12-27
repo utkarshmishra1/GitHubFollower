@@ -23,6 +23,7 @@ class SearchVC: UIViewController {
         configureLogoIageView()
         configureTextField()
         configureCallttoActionButton()
+        createDismissKeyboardGesture()
         
 
     }

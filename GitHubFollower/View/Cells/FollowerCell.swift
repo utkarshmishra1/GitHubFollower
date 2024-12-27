@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FollowerViewCell: UICollectionViewCell {
+class FollowerCell: UICollectionViewCell {
     static let reuseID = "FollowerCell"
     
     let avatarImageView    = GFAvatarImageView(frame: .zero)
