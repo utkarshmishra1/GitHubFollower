@@ -49,6 +49,8 @@ class FollowerListVC: UIViewController {
     
     
 //     network call
+//    Use guard when you need to ensure conditions are met before proceeding and want to exit early if they're not.
+//    Use if for simple checks, especially when no unwrapping or binding is involved.
     func getFollowers(){
         NetworkManager.shared.getFollowers(for: username, page: 1) { [weak self] result in
             guard let self = self else { return } // using this we don't need to add ? to the self
