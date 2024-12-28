@@ -64,12 +64,14 @@ class FollowerListVC: UIViewController {
         
         return flowLayout
     }
-    
+//     network call
     func getFollowers(){
-        NetworkManager.shared.getFollowers(for: username, page: 1) { result in
+        NetworkManager.shared.getFollowers(for: username, page: 1) { [weak self] result in
+            guard let self = self else { return } // using this we don't need to add ? to the self
+            
             switch result{
             case .success(let followers):
-                self.followers = followers
+                self.followers = followers // here network call has strong reference to our followerListVC- so we do self weak
                 self.updateData()
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something Went Wrong", message: error.rawValue, buttonTile: "OK")
