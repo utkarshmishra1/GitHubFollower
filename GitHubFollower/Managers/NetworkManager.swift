@@ -64,6 +64,51 @@ class NetworkManager{
             }
         task.resume()
         }
+    
+    
+    func getUserInfo(for username: String, completed: @escaping (Result<User, GFError>) -> Void){
+        let endpoint = baseURL + "\(username)"
+        
+//        create a url if it is invalid through an error
+        guard let url = URL(string: endpoint) else {
+            completed(.failure(.invalidUsername))
+            return
+        }
+        
+//        for the error we can use error.localisedDescripsion but we want por own error
+        
+//        if we get a valid url, URLSession used to fetch data from the provided URL
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let _ = error {
+                completed(.failure(.unableToComplete))
+                return
+            }
+            
+
+//            we only move forward if the response is 200 else show error
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completed(.failure(.invalidData))
+                return
+                
+            }
+//            making sure data is not nil
+            guard let data = data else {
+                completed(.failure(.invalidData))
+                return
+            }
+//             Parsing
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+//                getting array of followers
+                let user = try decoder.decode(User.self, from: data)
+                completed(.success(user))
+            } catch {
+                completed(.failure(.invalidData))
+            }
+            }
+        task.resume()
+        }
     }
     
 

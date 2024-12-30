@@ -1,8 +1,8 @@
 //
-//  ErrorMessages.swift
+//  GFError.swift
 //  GitHubFollower
 //
-//  Created by utkarsh mishra on 26/12/24.
+//  Created by utkarsh mishra on 30/12/24.
 //
 
 import Foundation
