@@ -11,9 +11,9 @@ import UIKit
 fileprivate var containerView: UIView! // this make it a global variable which can be used in any any function
 
 extension UIViewController {
-   func presentGFAlertOnMainThread(title: String?, message: String?, buttonTile: String) {
+   func presentGFAlertOnMainThread(title: String?, message: String?, buttonTitle: String) {
         DispatchQueue.main.async {
-            let alertVC = GFAlertVC(title: title, message: message, buttonTitle: buttonTile)
+            let alertVC = GFAlertVC(title: title, message: message, buttonTitle: buttonTitle)
             alertVC.modalPresentationStyle = .overFullScreen
             alertVC.modalTransitionStyle = .crossDissolve
             self.present(alertVC, animated: true)
