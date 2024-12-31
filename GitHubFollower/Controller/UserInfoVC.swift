@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 protocol UserInfoVCDelegate: AnyObject {
     func didRequestFollowers(for username: String)
@@ -23,7 +24,8 @@ class UserInfoVC: UIViewController {
         let dateLabel = GFBodyLabel(textAlignment: .center)
         
         var username: String!
-        weak var delegate: UserInfoVCDelegate!
+//        weak var delegate: UserInfoVCDelegate!
+    weak var delegate: FollowerListVCDelegate!
 
         
         override func viewDidLoad() {
@@ -134,7 +136,7 @@ class UserInfoVC: UIViewController {
                 return
             }
 
-//            presentSafariVC(with: url)
+            presentSafariVC(with: url)
         }
     }
 
@@ -142,7 +144,7 @@ class UserInfoVC: UIViewController {
     extension UserInfoVC: GFFollowerItemVCDelegate {
         func didTapGetFollowers(for user: User) {
             guard user.followers != 0 else {
-                presentGFAlertOnMainThread(title: "No followers", message: "This user has no followers. What a shame 😔.", buttonTitle: "So sad")
+                presentGFAlertOnMainThread(title: "No followers", message: "This user has no follower.", buttonTitle: "So sad")
                 return
             }
             delegate.didRequestFollowers(for: user.login)

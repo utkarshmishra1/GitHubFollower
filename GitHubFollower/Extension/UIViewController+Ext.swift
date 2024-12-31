@@ -7,6 +7,7 @@
 // now call system alert on every view controller, we are making this so that every view have this behaviour instead of subclass where some have only this behaviour
 import UIKit
 // in any view controller just call this function it will show alert
+import SafariServices
 
 fileprivate var containerView: UIView! // this make it a global variable which can be used in any any function
 
@@ -48,6 +49,12 @@ extension UIViewController {
             containerView = nil
         }
     }
+    
+    func presentSafariVC(with url: URL) {
+            let safariVC = SFSafariViewController(url: url)
+            safariVC.preferredControlTintColor = .systemGreen
+            present(safariVC, animated: true)
+        }
     
     func showEmptyStateView(with message: String, in view: UIView){
         let emptyStateView = GFEmptyStateView(message: message)
