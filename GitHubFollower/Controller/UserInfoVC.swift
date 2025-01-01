@@ -14,8 +14,8 @@ protocol UserInfoVCDelegate: AnyObject {
 
 class UserInfoVC: UIViewController {
 
-//        let scrollview = UIScrollView()
-//        let contentView = UIView()
+        let scrollview = UIScrollView()
+        let contentView = UIView()
         
         let headerView = UIView()
         let itemViewOne = UIView()
