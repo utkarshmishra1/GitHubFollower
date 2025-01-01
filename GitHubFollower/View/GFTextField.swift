@@ -21,22 +21,23 @@ class GFTextField: UITextField {
     
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
-        layer.cornerRadius = 10
-        layer.borderWidth = 2
-        layer.borderColor = UIColor.systemGray4.cgColor
+        layer.cornerRadius              = 10
+        layer.borderWidth               = 2
+        layer.borderColor               = UIColor.systemGray4.cgColor
         
-        textColor = .label
-        tintColor = .label
-        textAlignment = .center
-        font = UIFont.preferredFont(forTextStyle: .title2)
-        adjustsFontSizeToFitWidth = true
-        minimumFontSize = 12
+        textColor                       = .label
+        tintColor                       = .label
+        textAlignment                   = .center
+        font                            = UIFont.preferredFont(forTextStyle: .title2)
+        adjustsFontSizeToFitWidth       = true
+        minimumFontSize                 = 12
         
-        backgroundColor = .tertiarySystemBackground
-        autocorrectionType = .no
+        backgroundColor                 = .tertiarySystemBackground
+        autocorrectionType              = .no
 //        keyboardType = .asciiCapable  // If you want any modification of the keyboard you want
-        returnKeyType = .go
-        placeholder = "Enter a username"
+        returnKeyType                   = .go
+        clearButtonMode                 = .whileEditing
+        placeholder                     = "Enter a username"
     }
     
 }

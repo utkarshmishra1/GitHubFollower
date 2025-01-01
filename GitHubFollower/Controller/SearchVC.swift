@@ -31,6 +31,7 @@ class SearchVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        usernameTextField.text = ""
         navigationController?.setNavigationBarHidden(true, animated: true) // so that at next screen it will not appear
         
         
@@ -43,14 +44,17 @@ class SearchVC: UIViewController {
     }
 //    jb bbi #selector me use ho function to @Objc lgana pdta func me
     @objc func pushFollowerListVC() {
-        guard isUsernameEntered else {
-            presentGFAlertOnMainThread(title: "Empty Username", message: "Please enter a username", buttonTitle: "OK")
-            return }
-        let followerListVC = FollowerListVC()
-        followerListVC.username = usernameTextField.text!
-        followerListVC.title = usernameTextField.text
-        navigationController?.pushViewController(followerListVC, animated: true)
-    }
+            
+            guard isUsernameEntered else {
+                presentGFAlertOnMainThread(title: "Empty username", message: "Please enter a username. We need to know who to look for 😊", buttonTitle: "Ok")
+                return
+            }
+            
+            usernameTextField.resignFirstResponder()
+            
+            let followerListVC = FollowerListVC(username: usernameTextField.text!)
+            navigationController?.pushViewController(followerListVC, animated: true)
+        }
     
     func configureLogoIageView() {
         logoImageView.image = Images.ghLogo
