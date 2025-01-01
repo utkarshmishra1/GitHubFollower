@@ -82,7 +82,7 @@ class FavoritesListVC: UIViewController {
        
        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
            let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteCell.reuseID) as! FavoriteCell
-           let favorite = favorites[indexPath.row]   
+           let favorite = favorites[indexPath.row]    
            cell.set(favorite: favorite)
            
            return cell
@@ -91,7 +91,9 @@ class FavoritesListVC: UIViewController {
        
        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
            let favorite = favorites[indexPath.row]
-           let destVC = FollowerListVC(username: favorite.login)
+           let destVC = FollowerListVC()
+           destVC.username = favorite.login
+           destVC.title = favorite.login
            
            navigationController?.pushViewController(destVC, animated: true)
        }
