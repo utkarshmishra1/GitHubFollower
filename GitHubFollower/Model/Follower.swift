@@ -11,8 +11,8 @@ import Foundation
 // decoder.keyDecodingStrategy = .convertFromSnakeCase
 struct Follower: Codable, Hashable {
     
-    let login: String
-    let avatarUrl: String
+    let login:      String
+    let avatarUrl:  String
 }
 //struct Follower: Codable, Hashable {
 //var login: String var avatarUrl: String

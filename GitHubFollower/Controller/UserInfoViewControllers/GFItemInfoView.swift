@@ -36,7 +36,7 @@ class GFItemInfoView: UIView {
             
             symbolImageView.translatesAutoresizingMaskIntoConstraints = false
             symbolImageView.contentMode = .scaleAspectFill
-            symbolImageView.tintColor   =  .label
+            symbolImageView.tintColor   = .label
             
             NSLayoutConstraint.activate([
                 symbolImageView.topAnchor.constraint(equalTo: self.topAnchor),

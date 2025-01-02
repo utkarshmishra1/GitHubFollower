@@ -14,14 +14,14 @@ protocol UserInfoVCDelegate: AnyObject {
 
 class UserInfoVC: UIViewController {
 
-        let scrollview = UIScrollView()
+        let scrollview  = UIScrollView()
         let contentView = UIView()
         
-        let headerView = UIView()
-        let itemViewOne = UIView()
-        let itemViewTwo = UIView()
+        let headerView          = UIView()
+        let itemViewOne         = UIView()
+        let itemViewTwo         = UIView()
         var itemViews: [UIView] = []
-        let dateLabel = GFBodyLabel(textAlignment: .center)
+        let dateLabel           = GFBodyLabel(textAlignment: .center)
         
         var username: String!
 //        weak var delegate: UserInfoVCDelegate!
@@ -38,8 +38,8 @@ class UserInfoVC: UIViewController {
         
         
         func configureViewController() {
-            view.backgroundColor = .systemBackground
-            let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
+            view.backgroundColor    = .systemBackground
+            let doneButton          = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
             navigationItem.rightBarButtonItem = doneButton
         }
         
@@ -64,9 +64,7 @@ class UserInfoVC: UIViewController {
                 
                 switch result {
                 case .success(let user):
-                    DispatchQueue.main.async {
-                        self.configureUIElements(with: user)
-                    }
+                    DispatchQueue.main.async { self.configureUIElements(with: user) }
                     
                 case .failure(let error):
                     self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
@@ -84,7 +82,7 @@ class UserInfoVC: UIViewController {
         
         
         func layoutUI() {
-            let padding: CGFloat = 20
+            let padding: CGFloat    = 20
             let itemHeight: CGFloat = 140
             
             itemViews = [headerView, itemViewOne, itemViewTwo, dateLabel]

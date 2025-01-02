@@ -8,9 +8,9 @@
 import UIKit
 class NetworkManager{
 //    here shared is singleton
-    static let shared   = NetworkManager()
+    static let shared           = NetworkManager()
     private let baseURL         = "https://api.github.com/users/"
-    let cache           = NSCache<NSString, UIImage>() // made an Singleton cache
+    let cache                   = NSCache<NSString, UIImage>() // made an Singleton cache
     
 //    to use singleton cache we use networkManager.shared.
 //    it is single so we use private init

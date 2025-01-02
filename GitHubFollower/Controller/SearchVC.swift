@@ -9,9 +9,9 @@ import UIKit
 
 class SearchVC: UIViewController {
     
-    let logoImageView = UIImageView()
-    let usernameTextField = GFTextField()
-    let callToActionButton = GFButton(backgroundColor: .systemGreen, title: " Get Followers")
+    let logoImageView           = UIImageView()
+    let usernameTextField       = GFTextField()
+    let callToActionButton      = GFButton(backgroundColor: .systemGreen, title: " Get Followers")
     var logoImageViewTopConstraint: NSLayoutConstraint!
     
     var isUsernameEntered: Bool{

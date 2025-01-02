@@ -9,12 +9,12 @@ import UIKit
 
 class GFUserInfoHeaderVC: UIViewController {
     
-    let avatarImageView             = GFAvatarImageView(frame: .zero)
-    let usernameLabel               = GFTitleLabel(textAlignment: .left, fontSize: 34)
-    let nameLabel                   = GFSecondaryTitleLabel(fontSize: 18)
-    let locationImageView           = UIImageView()
-    let locationLabel               = GFSecondaryTitleLabel(fontSize: 18)
-    let bioLabel                    = GFBodyLabel(textAlignment: .left)
+    let avatarImageView      = GFAvatarImageView(frame: .zero)
+    let usernameLabel        = GFTitleLabel(textAlignment: .left, fontSize: 34)
+    let nameLabel            = GFSecondaryTitleLabel(fontSize: 18)
+    let locationImageView    = UIImageView()
+    let locationLabel        = GFSecondaryTitleLabel(fontSize: 18)
+    let bioLabel             = GFBodyLabel(textAlignment: .left)
 
     var user: User!
     
@@ -62,8 +62,8 @@ class GFUserInfoHeaderVC: UIViewController {
     }
         
         func layout(){
-            let padding: CGFloat = 20
-            let textImagePadding: CGFloat = 12
+            let padding: CGFloat            = 20
+            let textImagePadding: CGFloat   = 12
             locationLabel.translatesAutoresizingMaskIntoConstraints = false
             
             NSLayoutConstraint.activate([
@@ -98,8 +98,6 @@ class GFUserInfoHeaderVC: UIViewController {
                         bioLabel.heightAnchor.constraint(equalToConstant: 90)
                     ])
 
-            
-            
         }
     }
     

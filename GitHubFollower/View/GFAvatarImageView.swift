@@ -22,9 +22,9 @@ class GFAvatarImageView: UIImageView {
     }
     
     private func configure(){
-        layer.cornerRadius = 10
-        clipsToBounds = true// ye nhi krenge to image ki sharp corner rahegi baaki ki nhi
-        image = placeholderImage
+        layer.cornerRadius  = 10
+        clipsToBounds       = true// ye nhi krenge to image ki sharp corner rahegi baaki ki nhi
+        image               = placeholderImage
         translatesAutoresizingMaskIntoConstraints = false
     }
 //     so now before doing caching images download each time like - we go down and then up then again the above images will download again

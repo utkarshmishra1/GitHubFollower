@@ -36,8 +36,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window?.windowScene = windowScene
-        window?.rootViewController = GFTabBarController() // this tab bar controller holds the navigationa controller and the navigation controller will hold viewcontroller
+        window?.windowScene         = windowScene
+        window?.rootViewController  = GFTabBarController() // this tab bar controller holds the navigationa controller and the navigation controller will hold viewcontroller
         window?.makeKeyAndVisible()
         configurenavvigationBar()
         

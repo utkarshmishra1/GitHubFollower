@@ -30,8 +30,8 @@ class GFEmptyStateView: UIView {
     }
     
     private func configureMessageLabel() {
-            messageLabel.numberOfLines = 3
-            messageLabel.textColor = .secondaryLabel
+            messageLabel.numberOfLines  = 3
+            messageLabel.textColor      = .secondaryLabel
             
             let labelCenterYConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? -50 : -150
             

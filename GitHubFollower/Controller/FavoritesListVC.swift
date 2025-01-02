@@ -35,10 +35,10 @@ class FavoritesListVC: UIViewController {
        
        func configureTableView() {
            view.addSubview(tableView)
-           tableView.frame = view.bounds
-           tableView.rowHeight = 80
-           tableView.delegate = self
-           tableView.dataSource = self
+           tableView.frame          = view.bounds
+           tableView.rowHeight      = 80
+           tableView.delegate       = self
+           tableView.dataSource     = self
            tableView.removeExcessCells()
            
            tableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.reuseID)
@@ -101,8 +101,8 @@ class FavoritesListVC: UIViewController {
            guard editingStyle == .delete else { return }
            
            PersistenceManager.updateWith(favorite: favorites[indexPath.row], actionType: .remove) { [weak self] error in
-               guard let self = self else { return }
-               guard let error = error else {
+               guard let self   = self else { return }
+               guard let error  = error else {
                    self.favorites.remove(at: indexPath.row)
                    tableView.deleteRows(at: [indexPath], with: .left)
                    return
