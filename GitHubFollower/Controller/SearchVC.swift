@@ -33,8 +33,7 @@ class SearchVC: UIViewController {
         super.viewWillAppear(animated)
         usernameTextField.text = ""
         navigationController?.setNavigationBarHidden(true, animated: true) // so that at next screen it will not appear
-        
-        
+      
     }
     
     func createDismissKeyboardGesture() {
@@ -68,8 +67,6 @@ class SearchVC: UIViewController {
             logoImageView.heightAnchor.constraint(equalToConstant: 200)
             
         ])
-        
-        
     }
     
     func configureTextField() {
@@ -103,9 +100,6 @@ class SearchVC: UIViewController {
         ])
         
     }
-    
-
-   
 }
 
 //for organisation and performance
