@@ -133,12 +133,9 @@ class UserInfoVC: UIViewController {
                 presentGFAlertOnMainThread(title: "Invalid URL", message: "The url attached to this user is invalid.", buttonTitle: "OK")
                 return
             }
-
             presentSafariVC(with: url)
         }
     }
-
-
     extension UserInfoVC: GFFollowerItemVCDelegate {
         func didTapGetFollowers(for user: User) {
             guard user.followers != 0 else {
