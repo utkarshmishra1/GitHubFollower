@@ -15,8 +15,7 @@ class NetworkManager{
 //    to use singleton cache we use networkManager.shared.
 //    it is single so we use private init
     private init(){}
-    
-    
+
 //page: Int: the page number of followers (useful for paginated API results).
 //    This is a completion handler—a closure used to handle the result of the asynchronous operation.
     ///   - [Follower]?: List of followers if successful, or `nil` if failed.
@@ -38,7 +37,6 @@ class NetworkManager{
                 completed(.failure(.unableToComplete))
                 return
             }
-            
 
 //            we only move forward if the response is 200 else show error
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
@@ -64,8 +62,7 @@ class NetworkManager{
             }
         task.resume()
         }
-    
-    
+
     func getUserInfo(for username: String, completed: @escaping (Result<User, GFError>) -> Void){
         let endpoint = baseURL + "\(username)"
         

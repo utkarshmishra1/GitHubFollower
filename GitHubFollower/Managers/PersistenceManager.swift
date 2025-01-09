@@ -61,8 +61,7 @@ enum PersistenceManager {
             completed(.failure(.unableToFavorite))
         }
     }
-    
-    
+
     static func save(favorites: [Follower]) -> GFError? {
         
         do {
